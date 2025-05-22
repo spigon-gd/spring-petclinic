@@ -51,7 +51,7 @@ pipeline { // Pipeline A
     stage('Deploy') {
       steps {
         sh 'echo ===[Deploy]==='
-        sh "docker login -u $NEXUS_USR -p $NEXUS_PSW"
+        sh "docker login -u $NEXUS_USR -p '$NEXUS_PSW' $NEXUS_URL_MR"
         sh "docker push $NEXUS_URL_MR/$IMAGE"
       }
     }
