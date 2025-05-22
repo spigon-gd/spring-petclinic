@@ -45,7 +45,7 @@ pipeline { // Pipeline A
     stage('Image') {
       steps {
         sh 'echo ===[Image]==='
-        sh "docker build -t $NAME:$GIT_COMMIT"
+        sh "docker build -t $NAME:$GIT_COMMIT ."
       }
     }
     stage('Deploy') {
