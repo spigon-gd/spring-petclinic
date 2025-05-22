@@ -2,8 +2,8 @@ pipline { // Pipeline A
   agent any
   environment {
     NEXUS = credentials('nexus')
-    NEXUS_URL_MAIN = '0.0.0.0:8088'
-    NEXUS_URL_MR = '0.0.0.0:8089'
+    NEXUS_URL_MAIN = '127.0.0.1:8088'
+    NEXUS_URL_MR = '127.0.0.1:8089'
     NAME = 'spring-petclinic'
     IMAGE = "$NAME:$GIT_COMMIT"
   }
