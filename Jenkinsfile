@@ -12,7 +12,7 @@ pipeline { // Pipeline A
       steps {
         sh 'echo ===[Prep]==='
         withGradle {
-          sh 'gradle clean'
+          sh './gradlew clean'
         }
       }
     }
@@ -20,7 +20,7 @@ pipeline { // Pipeline A
       steps {
         sh 'echo ===[Checkstyle]==='
         withGradle {
-          sh 'gradle check'
+          sh './gradlew check'
         }
         archiveArtifacts artifacts: '**/build/reports/checkstyle/*.html', fingerprint: true
       }
@@ -29,7 +29,7 @@ pipeline { // Pipeline A
       steps {
         sh 'echo ===[Test]==='
         withGradle {
-          sh 'gradle test'
+          sh './gradlew test'
         }
         archiveArtifacts artifacts: '**/build/reports/tests/**/*', fingerprint: true
       }
@@ -38,7 +38,7 @@ pipeline { // Pipeline A
       steps {
         sh 'echo ===[Build]==='
         withGradle {
-          sh 'gradle clean build -x test'
+          sh './gradlew clean build -x test'
         }
       }
     }
