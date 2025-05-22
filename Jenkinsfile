@@ -1,4 +1,4 @@
-pipline { // Pipeline A
+pipeline { // Pipeline A
   agent any
   environment {
     NEXUS = credentials('nexus')
