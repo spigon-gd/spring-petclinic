@@ -2,8 +2,8 @@ pipeline { // Pipeline A
   agent any
   environment {
     NEXUS = credentials('nexus')
-    NEXUS_URL_MAIN = 'host.docker.internal:8088'
-    NEXUS_URL_MR = 'host.docker.internal:8089'
+    NEXUS_URL_MAIN = 'http://host.docker.internal:8088'
+    NEXUS_URL_MR = 'http://host.docker.internal:8089'
     NAME = 'spring-petclinic'
     IMAGE = "$NAME:$GIT_COMMIT"
   }
