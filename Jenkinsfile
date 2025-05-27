@@ -54,7 +54,7 @@ pipeline { // Pipeline A
     stage('Deploy') {
       steps {
         sh 'echo ===[Deploy]==='
-        sh 'docker login -u $DOCKERHUB_USR --password-stdin'
+        sh 'docker login -u $DOCKERHUB_USR -p $DOCKERHUB_PSW'
         sh "docker push $DOCKERHUB_MR/$IMAGE"
       }
     }
