@@ -4,6 +4,9 @@ pipeline { // Pipeline A
     NEXUS = credentials('nexus')
     NEXUS_URL_MAIN = 'https://host.docker.internal:8084'
     NEXUS_URL_MR = 'https://host.docker.internal:8085'
+    DOCKERHUB = credentials('dockerhub')
+    DOCKERHUB_MAIN = 'spigon/main'
+    DOCKERHUB_MR = 'spigon/mr'
     NAME = 'spring-petclinic'
     IMAGE = "$NAME:$GIT_COMMIT"
   }
@@ -51,8 +54,8 @@ pipeline { // Pipeline A
     stage('Deploy') {
       steps {
         sh 'echo ===[Deploy]==='
-        sh 'docker login -u $NEXUS_USR -p "$NEXUS_PSW" $NEXUS_URL_MR'
-        sh "docker push $NEXUS_URL_MR/$IMAGE"
+        sh 'docker login -u $DOCKERHUB_USR --password-stdin'
+        sh "docker push $DOCKERHUB_MR/$IMAGE"
       }
     }
   }
