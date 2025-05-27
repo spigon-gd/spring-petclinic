@@ -48,14 +48,14 @@ pipeline { // Pipeline A
     stage('Image') {
       steps {
         sh 'echo ===[Image]==='
-        sh "docker build -t $NAME:$GIT_COMMIT ."
+        sh "docker build -t $DOCKERHUB_MR:$NAME-$GIT_COMMIT ."
       }
     }
     stage('Deploy') {
       steps {
         sh 'echo ===[Deploy]==='
         sh 'docker login -u $DOCKERHUB_USR -p $DOCKERHUB_PSW'
-        sh "docker push $DOCKERHUB_MR/$IMAGE"
+        sh "docker push $DOCKERHUB_MR:$NAME-$GIT_COMMIT"
       }
     }
   }
